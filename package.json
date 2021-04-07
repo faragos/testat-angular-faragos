@@ -1,0 +1,10 @@
+{
+  "name": "we3-finance-repo",
+  "version": "0.4.1",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@angular/cli": "^11.2.3"
+  }
+}
