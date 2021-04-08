@@ -3,36 +3,40 @@
   <label>
     First name:
     <div>
-      <input pattern=".{2,}" placeholder="First name" type="text" name="firstname">
-      <div>Please specify your first name.</div>
+      <input pattern=".{2,}" placeholder="First name" type="text" name="firstname" [(ngModel)]="firstname"
+             #firstnameField="ngModel">
+      <div [hidden]="firstnameField.valid|| firstnameField.pristine">Please specify your first name.</div>
     </div>
   </label>
   <label>
     Last name:
     <div>
-      <input pattern=".{2,}" placeholder="Last name" type="text" name="lastname">
-      <div>Please specify your last name.</div>
+      <input pattern=".{2,}" placeholder="Last name" type="text" name="lastname" [(ngModel)]="lastname"
+             #lastnameField="ngModel">
+      <div [hidden]="lastnameField.valid|| lastnameField.pristine">Please specify your last name.</div>
     </div>
   </label>
   <label>
     User name:
     <div>
-      <input pattern=".{3,}" placeholder="User" type="text" name="login">
-      <div>Please specify your login, at least three characters.</div>
+      <input pattern=".{3,}" placeholder="User" type="text" name="login" [(ngModel)]="login" #loginField="ngModel">
+      <div [hidden]="loginField.valid|| loginField.pristine">Please specify your login, at least three characters.</div>
     </div>
   </label>
   <label>
     Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password">
-      <div>Please specify your password, at least three characters.</div>
+      <input pattern=".{3,}" placeholder="Password" type="password" name="password" [(ngModel)]="password"
+             #passwordField="ngModel">
+      <div [hidden]="passwordField.valid|| passwordField.pristine">Please specify your password, at least three characters.</div>
     </div>
   </label>
   <label>
     Confirm Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="passwordConfirm">
-      <div>Please confirm your password.</div>
+      <input pattern=".{3,}" placeholder="Password" type="password" name="passwordConfirm" [(ngModel)]="passwordConfirm"
+             #passwordConfirmField="ngModel">
+      <div [hidden]="passwordConfirm != password && passwordConfirmField.valid && passwordConfirmField.pristine">Please confirm your password.</div>
     </div>
   </label>
   <button>Register</button>

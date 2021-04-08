@@ -1,18 +1,23 @@
 <!-- TODO: Add ng specific directives/validation settings and add styling -->
-<form (ngSubmit)="doLogin()">
+<form (ngSubmit)="doLogin(loginForm)" #loginForm="ngForm">
   <label>
     User name:
     <div>
-      <input pattern=".{3,}" placeholder="User" type="text" name="login">
-      <div>Please specify your login, at least three characters.</div>
+      <input pattern=".{3,}" placeholder="User" type="text" name="login" required [(ngModel)]="login"
+             #loginField="ngModel">
+      <div [hidden]="loginField.valid|| loginField.pristine">Please specify your login, at least three characters.</div>
     </div>
   </label>
   <label>
     Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password">
-      <div>Please specify your login, at least three characters.</div>
+      <input pattern=".{3,}" placeholder="Password" type="password" name="password" required
+             [(ngModel)]="password" #passwordField="ngModel">
+      <div
+        [hidden]="passwordField.valid|| passwordField.pristine">Please specify your login, at least three characters.</div>
     </div>
   </label>
-  <button>Login</button>
+  <button type="submit"
+          class="btn btn-success"
+          [disabled]="!loginForm.form.valid">Login</button>
 </form>

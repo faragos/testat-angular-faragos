@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   public login?: string;
   public password?: string;
+  public passwordConfirm?: string;
   public firstname?: string;
   public lastname?: string;
 

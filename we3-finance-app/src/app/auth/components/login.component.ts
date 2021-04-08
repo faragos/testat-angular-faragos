@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       (p: Params) => this.backUrl = p.backUrl);
   }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.backUrl = '';
     this.autSvc.authenticatedUserChange.subscribe(
