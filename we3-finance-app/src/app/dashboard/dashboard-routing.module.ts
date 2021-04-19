@@ -1,10 +1,11 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from './components/main/main.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: null, // TODO: Add initial router outlet dashboard component...
+    component: MainComponent,
     children: [
       // TODO: Add routing path for dashboard here...
     ]

@@ -1,9 +1,9 @@
 <!-- TODO: Add ng specific directives/validation settings and add styling -->
-<form (ngSubmit)="doRegister()">
+<form (ngSubmit)="doRegister()" #registerForm="ngForm">
   <label>
     First name:
     <div>
-      <input pattern=".{2,}" placeholder="First name" type="text" name="firstname" [(ngModel)]="firstname"
+      <input pattern=".{2,}" placeholder="First name" type="text" name="firstname" [(ngModel)]="firstname" required
              #firstnameField="ngModel">
       <div [hidden]="firstnameField.valid|| firstnameField.pristine">Please specify your first name.</div>
     </div>
@@ -11,7 +11,7 @@
   <label>
     Last name:
     <div>
-      <input pattern=".{2,}" placeholder="Last name" type="text" name="lastname" [(ngModel)]="lastname"
+      <input pattern=".{2,}" placeholder="Last name" type="text" name="lastname" [(ngModel)]="lastname" required
              #lastnameField="ngModel">
       <div [hidden]="lastnameField.valid|| lastnameField.pristine">Please specify your last name.</div>
     </div>
@@ -19,14 +19,15 @@
   <label>
     User name:
     <div>
-      <input pattern=".{3,}" placeholder="User" type="text" name="login" [(ngModel)]="login" #loginField="ngModel">
+      <input pattern=".{3,}" placeholder="User" type="text" name="login" [(ngModel)]="login" #loginField="ngModel"
+             required>
       <div [hidden]="loginField.valid|| loginField.pristine">Please specify your login, at least three characters.</div>
     </div>
   </label>
   <label>
     Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password" [(ngModel)]="password"
+      <input pattern=".{3,}" placeholder="Password" type="password" name="password" [(ngModel)]="password" required
              #passwordField="ngModel">
       <div [hidden]="passwordField.valid|| passwordField.pristine">Please specify your password, at least three characters.</div>
     </div>
@@ -35,9 +36,11 @@
     Confirm Password:
     <div>
       <input pattern=".{3,}" placeholder="Password" type="password" name="passwordConfirm" [(ngModel)]="passwordConfirm"
+             required
              #passwordConfirmField="ngModel">
-      <div [hidden]="passwordConfirm != password && passwordConfirmField.valid && passwordConfirmField.pristine">Please confirm your password.</div>
+      <div [hidden]="passwordConfirmField.valid || passwordConfirmField.pristine">Please confirm your password, at least three characters.</div>
+      <div [hidden]="passwordConfirmField.pristine || passwordConfirm == password">Passwords are not matching</div>
     </div>
   </label>
-  <button>Register</button>
+  <button [disabled]="!registerForm.valid || passwordConfirm != password">Register</button>
 </form>

@@ -1,23 +1,24 @@
-import {NgModule, ModuleWithProviders, Type} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import { NgModule, Type } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import {SharedModule} from '@app/shared';
+import { SharedModule } from '@app/shared';
 
-import {AuthModule} from '../auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 
-import {DashbaordRoutingModule} from './dashboard-routing.module';
-
+import { DashbaordRoutingModule } from './dashboard-routing.module';
+import { MainComponent } from './components/main/main.component';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   // Declarations (Components / Directives) which can be used outside the Module
 ];
 const INTERNAL_DECLARATIONS: Array<Type<any> | any[]> = [
-  ...EXPORTED_DECLARATIONS
+  ...EXPORTED_DECLARATIONS,
   // Declarations (Components / Directives) which can be used inside the Module
+  MainComponent
 ];
-const EXPORTS = [
-  ...EXPORTED_DECLARATIONS: Array<Type<any> | any[]>
+const EXPORTS: Array<Type<any> | any[]> = [
+  ...EXPORTED_DECLARATIONS
   // Components/Directives (or even Modules) to export (available for other modules)
 ];
 

@@ -1,18 +1,19 @@
-import {NgModule, ModuleWithProviders, Type} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { ModuleWithProviders, NgModule, Type } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import {SharedModule} from '@app/shared';
+import { SharedModule } from '@app/shared';
 
-import {LoginComponent} from './components/login.component';
-import {LogoutComponent} from './components/logout.component';
-import {RegisterComponent} from './components/register.component';
+import { LoginComponent } from './components/login.component';
+import { LogoutComponent } from './components/logout.component';
+import { RegisterComponent } from './components/register.component';
 
-import {TokenInterceptor} from './resources/token-interceptor';
-import {AuthResourceService} from './resources/auth-resource.service';
+import { TokenInterceptor } from './resources/token-interceptor';
+import { AuthResourceService } from './resources/auth-resource.service';
 
-import {SecurityTokenStore} from './services/credential-management/security-token-store';
-
+import { SecurityTokenStore } from './services/credential-management/security-token-store';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   LoginComponent, LogoutComponent, RegisterComponent
@@ -30,7 +31,9 @@ const EXPORTS: Array<Type<any> | any[]> = [
   declarations: INTERNAL_DECLARATIONS,
   imports: [
     FormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
+    CommonModule
   ],
   exports: EXPORTS,
   providers: [AuthResourceService]
