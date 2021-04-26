@@ -1,20 +1,20 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
-import {registerLocaleData} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeDeCH from '@angular/common/locales/de-CH';
 import localeDeCHExtra from '@angular/common/locales/extra/de-CH';
 
-import {CoreModule} from '@app/core';
+import { CoreModule } from '@app/core';
 
-import {WelcomeModule} from './welcome/welcome.module';
-import {AuthModule} from './auth/auth.module';
+import { WelcomeModule } from './welcome/welcome.module';
+import { AuthModule } from './auth/auth.module';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import {AppComponent} from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
 

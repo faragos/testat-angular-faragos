@@ -8,6 +8,8 @@ import { AuthModule } from '../auth/auth.module';
 
 import { DashbaordRoutingModule } from './dashboard-routing.module';
 import { MainComponent } from './components/main/main.component';
+import { MatListModule } from '@angular/material/list';
+import { TransactionsComponent } from './components/transactions/transactions.component';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   // Declarations (Components / Directives) which can be used outside the Module
@@ -23,11 +25,14 @@ const EXPORTS: Array<Type<any> | any[]> = [
 ];
 
 @NgModule({
-  declarations: INTERNAL_DECLARATIONS,
+  declarations: [
+    INTERNAL_DECLARATIONS,
+    TransactionsComponent
+  ],
   imports: [
     // Other Modules to import (imports the exported Components/Directives from the other module)
     SharedModule, CommonModule, FormsModule,
-    AuthModule, DashbaordRoutingModule
+    AuthModule, DashbaordRoutingModule, MatListModule
   ],
   exports: EXPORTS,
   providers: [

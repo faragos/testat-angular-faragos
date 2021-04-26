@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/services/auth-guard';
 
 const appRoutes: Routes = [
 
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canLoad: [] // TODO: Add guard for lazy loaded Dashboard module here...
+    canLoad: [AuthGuard]
   },
 
   // Welcome module is eagerly loaded.
