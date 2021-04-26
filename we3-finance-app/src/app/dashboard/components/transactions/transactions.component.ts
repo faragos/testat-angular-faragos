@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Transaction } from '../../models/transaction';
 import { Subscription } from 'rxjs';
 import { TransactionService } from '../../services/transaction.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'wed-transactions',
@@ -11,6 +12,8 @@ import { TransactionService } from '../../services/transaction.service';
 export class TransactionsComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
   private transactionsSubscription: Subscription | undefined;
+  displayedColumns: string[] = ['from', 'target', 'amount', 'total', 'date'];
+  dataSource: MatTableDataSource<Transaction> = new MatTableDataSource(this.transactions);
 
   constructor(private transactionService: TransactionService) {
   }
@@ -19,8 +22,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.transactionService.getTransactions();
     this.transactionsSubscription = this.transactionService.transactionsChanged.subscribe(
       (data: Transaction[]) => {
-        debugger
         this.transactions = data;
+        this.dataSource = new MatTableDataSource(this.transactions);
       });
   }
 

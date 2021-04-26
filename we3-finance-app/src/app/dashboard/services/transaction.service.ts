@@ -15,7 +15,6 @@ export class TransactionService {
 
   public getTransactions(): void {
     this.resource.fetchTransactions().subscribe((data: Transaction[] | null) => {
-      debugger
       this.transactions = data != null ? data : [];
       this.transactionsChanged.emit(this.transactions);
     });

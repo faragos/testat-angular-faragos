@@ -1,11 +1,11 @@
-import {ActivatedRoute, Params} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import {NavigationService} from '@app/core';
+import { NavigationService } from '@app/core';
 
-import {AuthService} from '../services/auth.service';
-import {LoginInfo} from '../models/login-info';
+import { AuthService } from '../services/auth.service';
+import { LoginInfo } from '../models/login-info';
 
 @Component({
   selector: 'wed-login',
@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
       (p: Params) => this.backUrl = p.backUrl);
   }
 
-  // tslint:disable-next-line:typedef
-  ngOnInit() {
+  ngOnInit(): void {
     this.backUrl = '';
     this.autSvc.authenticatedUserChange.subscribe(
       (credentials) => {
