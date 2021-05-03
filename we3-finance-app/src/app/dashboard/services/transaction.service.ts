@@ -6,9 +6,11 @@ import { Transaction } from '../models/transaction';
   providedIn: 'root'
 })
 export class TransactionService {
+  transactionAnswer: Transaction = new Transaction(0, 0, 0, 0, new Date());
   transactions: Transaction[] = [];
   public transactionsChanged: EventEmitter<Transaction[]> =
     new EventEmitter<Transaction[]>();
+  public transactionAnswerChanged: EventEmitter<Transaction> = new EventEmitter<Transaction>();
 
   constructor(private resource: TransactionResourceService) {
   }
@@ -17,6 +19,15 @@ export class TransactionService {
     this.resource.fetchTransactions().subscribe((data: Transaction[] | null) => {
       this.transactions = data != null ? data : [];
       this.transactionsChanged.emit(this.transactions);
+    });
+  }
+
+  public postTransaction(target: number, amount: number): void {
+    this.resource.postTransaction(target, amount).subscribe((data: Transaction | null) => {
+      if (data != null) {
+        this.transactionAnswer = data;
+        this.transactionAnswerChanged.emit(this.transactionAnswer);
+      }
     });
   }
 }

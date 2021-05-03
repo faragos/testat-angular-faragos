@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { NavigationService } from '@app/core';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/services/auth.service';
 
 @Injectable({providedIn: 'root'})
-export class AuthGuard /* implements CanLoad, CanActivate */ {
+export class WeclomeGuard /* implements CanLoad, CanActivate */ {
   constructor(private authSvc: AuthService, private navigationSvc: NavigationService) {
   }
 
@@ -15,10 +15,10 @@ export class AuthGuard /* implements CanLoad, CanActivate */ {
    */
   public canLoad(): boolean {
     if (this.authSvc.hasCredentials) {
-      return true;
+      this.navigationSvc.goToDashboard();
+      return false;
     }
-    this.navigationSvc.goToHome();
-    return false;
+    return true;
   }
 
   /**
@@ -27,9 +27,9 @@ export class AuthGuard /* implements CanLoad, CanActivate */ {
    */
   public canActivate(): boolean {
     if (this.authSvc.hasCredentials) {
-      return true;
+      this.navigationSvc.goToDashboard();
+      return false;
     }
-    this.navigationSvc.goToHome();
-    return false;
+    return true;
   }
 }

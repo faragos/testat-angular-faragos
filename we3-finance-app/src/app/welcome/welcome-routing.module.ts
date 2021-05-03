@@ -1,16 +1,17 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {RegisterComponent} from '../auth/components/register.component';
-import {LoginComponent} from '../auth/components/login.component';
+import { RegisterComponent } from '../auth/components/register.component';
+import { LoginComponent } from '../auth/components/login.component';
 
-import {WelcomeComponent} from './welcome.component';
+import { WelcomeComponent } from './welcome.component';
+import { WeclomeGuard } from './weclome-guard';
 
 const appRoutes: Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent,
-    // TODO: Add guard and routing (Register/Login) here...
+    canActivate: [WeclomeGuard],
     children: [
       {path: 'register', component: RegisterComponent},
       {path: '', component: LoginComponent}
