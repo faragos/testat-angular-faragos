@@ -1,5 +1,11 @@
-<div *ngIf="transactionSucceeded">
-  Transaction Succeeded to {{transactionAnswer?.from}}
+<div *ngIf="transactionSucceeded" class="transaction-response">
+  <div>Transaction to {{transactionAnswer?.from}} succeeded!</div>
+  <div>New balance {{transactionAnswer?.total}} CHF</div>
+  <div>
+    <button mat-raised-button color="primary" type="button"
+            (click)="resetTransactionView()">Abschicken</button>
+  </div>
+
 </div>
 <div *ngIf="!transactionSucceeded">
   <form (ngSubmit)="onSubmit(transactionForm)" #transactionForm="ngForm">

@@ -14,6 +14,7 @@ import { AuthResourceService } from './resources/auth-resource.service';
 import { SecurityTokenStore } from './services/credential-management/security-token-store';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   LoginComponent, LogoutComponent, RegisterComponent
@@ -33,7 +34,8 @@ const EXPORTS: Array<Type<any> | any[]> = [
     FormsModule,
     SharedModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ],
   exports: EXPORTS,
   providers: [AuthResourceService]

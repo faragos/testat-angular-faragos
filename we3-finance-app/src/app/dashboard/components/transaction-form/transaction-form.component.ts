@@ -48,6 +48,10 @@ export class TransactionFormComponent implements OnInit {
     this.accountService.getAccount(event.target.value);
   }
 
+  public resetTransactionView(): void {
+    this.transactionSucceeded = false;
+  }
+
   public onSubmit(f?: NgForm): boolean {
     if (f && f.valid) {
       this.transactionService.postTransaction(f.value.target, f.value.amount);
