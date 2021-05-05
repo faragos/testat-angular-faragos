@@ -1,7 +1,9 @@
 <nav>
   <ul>
-    <li><a routerLink="./" routerLinkActive="active">Login</a></li>
-    <li><a routerLink="./register" routerLinkActive="active">Register</a></li>
+    <li><a mat-raised-button routerLink="./" routerLinkActive="active">Login</a></li>
+    <li><a mat-raised-button routerLink="./register" routerLinkActive="active">Register</a></li>
   </ul>
 </nav>
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

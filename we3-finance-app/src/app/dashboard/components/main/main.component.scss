@@ -1,12 +1,47 @@
-header {
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+
+nav {
+  border-bottom: 1px solid black;
+  background-color: mat-color($primary);
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+.container {
+  padding: 20px;
+}
+
+nav {
   display: grid;
-  grid-template-columns: 1fr auto;
-  justify-items: end;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-main {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+@media only screen and (min-width: 600px) {
+  nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logout-component {
+    justify-self: flex-end;
+  }
 }
+
+
+

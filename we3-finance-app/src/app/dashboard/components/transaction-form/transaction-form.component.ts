@@ -17,8 +17,9 @@ export class TransactionFormComponent implements OnInit {
   accountInfo: AccountInfo | undefined;
   private accountInfoSubscription: Subscription | undefined;
   private myAccountInfoSubscription: Subscription | undefined;
-  private postTranscationSubscription: Subscription | undefined;
+  private postTransactionSubscription: Subscription | undefined;
   transactionSucceeded = false;
+  valueValid = false;
 
   constructor(private accountService: AccountService, private transactionService: TransactionService) {
   }
@@ -34,7 +35,7 @@ export class TransactionFormComponent implements OnInit {
         this.myAccountInfo = data;
       });
 
-    this.postTranscationSubscription = this.transactionService.transactionAnswerChanged.subscribe(
+    this.postTransactionSubscription = this.transactionService.transactionAnswerChanged.subscribe(
       (data: Transaction) => {
         this.transactionService.getTransactions();
         this.accountService.getMyAccount();
@@ -48,13 +49,20 @@ export class TransactionFormComponent implements OnInit {
     this.accountService.getAccount(event.target.value);
   }
 
+  public checkValue(event: any): void {
+    this.valueValid = event.target.value > 0.05;
+  }
+
   public resetTransactionView(): void {
     this.transactionSucceeded = false;
+    this.valueValid = false;
   }
 
   public onSubmit(f?: NgForm): boolean {
     if (f && f.valid) {
       this.transactionService.postTransaction(f.value.target, f.value.amount);
+      this.accountInfo = undefined;
+      f.resetForm();
     }
     return false;
   }

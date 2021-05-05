@@ -6,7 +6,7 @@ import { SharedModule } from '@app/shared';
 
 import { AuthModule } from '../auth/auth.module';
 
-import { DashbaordRoutingModule } from './dashboard-routing.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { MatListModule } from '@angular/material/list';
 import { TransactionsComponent } from './components/transactions/transactions.component';
@@ -16,6 +16,8 @@ import { TransactionFormComponent } from './components/transaction-form/transact
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { TransactionsListComponent } from './components/transactions-list/transactions-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   // Declarations (Components / Directives) which can be used outside the Module
@@ -34,12 +36,14 @@ const EXPORTS: Array<Type<any> | any[]> = [
   declarations: [
     INTERNAL_DECLARATIONS,
     TransactionsComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    TransactionsListComponent,
+    HomeComponent
   ],
   imports: [
     // Other Modules to import (imports the exported Components/Directives from the other module)
     SharedModule, CommonModule, FormsModule,
-    AuthModule, DashbaordRoutingModule, MatListModule, MatTableModule,
+    AuthModule, DashboardRoutingModule, MatListModule, MatTableModule,
     MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule
   ],
   exports: EXPORTS,

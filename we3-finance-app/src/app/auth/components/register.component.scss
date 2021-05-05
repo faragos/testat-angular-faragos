@@ -1,0 +1,15 @@
+:host {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 400px;
+  margin: auto;
+}
+
+.register-button, .mat-form-field {
+  width: 100%;
+}

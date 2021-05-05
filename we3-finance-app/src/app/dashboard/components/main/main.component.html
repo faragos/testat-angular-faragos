@@ -1,9 +1,12 @@
 <header>
-  <wed-logout></wed-logout>
+  <nav>
+    <ul>
+      <li><a mat-raised-button routerLink="./" routerLinkActive="active">Home</a></li>
+      <li><a mat-raised-button routerLink="./all" routerLinkActive="active">Alle Transaktionen</a></li>
+    </ul>
+    <wed-logout class="logout-component"></wed-logout>
+  </nav>
 </header>
-<main>
-  <wed-transaction-form class="transaction-form"></wed-transaction-form>
-  <wed-transactions class="transaction-list"></wed-transactions>
-</main>
-
-
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

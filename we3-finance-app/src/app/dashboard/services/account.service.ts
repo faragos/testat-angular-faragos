@@ -8,10 +8,10 @@ import { Account } from '../../auth/models/account';
 })
 export class AccountService {
   acc: Account = new Account('', '', '', '0');
-  accInfo: AccountInfo = new AccountInfo(0, 0, 0, this.acc);
+  accInfo: AccountInfo | null = null;
   myAccInfo: AccountInfo = new AccountInfo(0, 0, 0, this.acc);
-  public authInfoChanged: EventEmitter<AccountInfo> =
-    new EventEmitter<AccountInfo>();
+  public authInfoChanged: EventEmitter<AccountInfo | null> =
+    new EventEmitter<AccountInfo | null>();
   public myAuthInfoChanged: EventEmitter<AccountInfo> =
     new EventEmitter<AccountInfo>();
 
@@ -20,7 +20,7 @@ export class AccountService {
 
   public getAccount(id: number): void {
     this.resource.fetchAccount(id).subscribe((data: AccountInfo | null) => {
-      this.accInfo = data != null ? data : new AccountInfo(0, 0, 0, this.acc);
+      this.accInfo = data != null ? data : null;
       this.authInfoChanged.emit(this.accInfo);
     });
   }

@@ -15,6 +15,8 @@ import { SecurityTokenStore } from './services/credential-management/security-to
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const EXPORTED_DECLARATIONS: Array<Type<any> | any[]> = [
   LoginComponent, LogoutComponent, RegisterComponent
@@ -35,7 +37,9 @@ const EXPORTS: Array<Type<any> | any[]> = [
     SharedModule,
     RouterModule,
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: EXPORTS,
   providers: [AuthResourceService]

@@ -1,24 +1,20 @@
 <!-- TODO: Add ng specific directives/validation settings and add styling -->
-<h1>Willkommen</h1>
 <form (ngSubmit)="doLogin(loginForm)" #loginForm="ngForm">
-  <label>
-    User name:
-    <div>
-      <input pattern=".{3,}" placeholder="User" type="text" name="login" required [(ngModel)]="login"
+    <mat-form-field appearance="fill">
+      <mat-label>User name:</mat-label>
+      <input matInput pattern=".{3,}" placeholder="User" type="text" name="login" required [(ngModel)]="login"
              #loginField="ngModel">
       <div [hidden]="loginField.valid|| loginField.pristine">Please specify your login, at least three characters.</div>
-    </div>
-  </label>
-  <label>
-    Password:
-    <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password" required
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password:</mat-label>
+      <input matInput pattern=".{3,}" placeholder="Password" type="password" name="password" required
              [(ngModel)]="password" #passwordField="ngModel">
       <div
         [hidden]="passwordField.valid|| passwordField.pristine">Please specify your login, at least three characters.</div>
-    </div>
-  </label>
-  <button type="submit"
-          class="btn btn-success"
+    </mat-form-field>
+  <button mat-raised-button
+          type="submit"
+          class="login-button"
           [disabled]="!loginForm.form.valid">Login</button>
 </form>
